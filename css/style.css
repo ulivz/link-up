@@ -1,0 +1,23 @@
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after {
+    clear: both;
+    content: '.';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.martix-element {
+    box-sizing: border-box;
+    margin: 2px;
+}
+
+.choosed {
+    border: 2px solid #f77;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}

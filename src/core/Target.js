@@ -1,8 +1,6 @@
-/**
- * Target
- */
+import Element from '../dom/Element'
 
-class Target {
+export default class Target {
 
     constructor(targetElement) {
 

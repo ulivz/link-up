@@ -1,10 +1,10 @@
-/**
- * linkup.js
- * toxichl @ 2016 - 2017
- * MIT LiCENSE
- */
+import Target from './Target'
+import TargetCollection from './TargetCollection'
+import Block from '../dom/Block'
+import Button from '../dom/Button'
+import MatrixElement from '../dom/MatrixElement'
 
-class Matrix {
+export default class Matrix {
 
     constructor() {
 
@@ -25,11 +25,16 @@ class Matrix {
     }
 
     get dom() {
-        return Matrix.createDomByMatrix(this.data, target => this.handle(target))
+        return Matrix.createDomByMatrix(this, target => this.handle(target))
     }
 
-    render(el) {
+    $mount(el) {
+        this.mountElement = el
         this.dom.mount(el)
+    }
+
+    $destory() {
+        this.mountElement.innerHTML = null
     }
 
     // handle the click target element
@@ -107,33 +112,96 @@ class Matrix {
      */
     static createDomByMatrix(matrix, callback) {
 
-        return new Block()
-            .addClass('matrix-container')
-            .append(
-                matrix.map((line, i) =>
-                    new Block()
-                        .addClass('clearfix line-container')
-                        .append(
-                            line.map((element, j) =>
-                                new MatrixElement(element)
-                                    .setAttr('matrix-key', `${i}-${j}`)
-                                    .addEvent('click', e => {
-                                        callback && callback(
-                                            e.target
-                                        )
-                                    })
-                            )
+        let container = new Block()
+        container.addClass('matrix-container')
+
+        matrix.data.forEach((line, i) => {
+
+            let subContainer = new Block()
+            subContainer.addClass('clearfix line-container')
+
+            line.forEach((element, j)=> {
+
+                let matrixElement = new MatrixElement(element)
+                matrixElement.setAttr('matrix-key', `${i}-${j}`)
+                    .addEvent('click', e => {
+                        callback && callback(
+                            e.target
                         )
+                    })
+                subContainer.append(matrixElement)
+
+            })
+
+            container.append(subContainer)
+
+        })
+
+        let newGameBtn = new Button('New Game')
+        newGameBtn.addClass('btn btn-restart')
+            .addEvent('click', () => {
+                matrix.$destory()
+                new Matrix(7, 0.3).$mount(
+                    document.getElementById('app')
                 )
-            )
-            .append(
-                new Block()
-                    .addClass('btn-wrapper')
-                    .append(
-                        new Button('ReStart')
-                            .addClass('btn btn-restart')
-                    )
-            )
+            })
+
+        let btnWrapper = new Block()
+        btnWrapper.addClass('btn-wrapper')
+        btnWrapper.append(newGameBtn)
+        container.append(btnWrapper)
+
+        // newGameBtn
+        //     .addClass('btn-wrapper')
+        //     .append(
+        //         new Button('New Game')
+        //             .addClass('btn btn-restart')
+        //     )
+        //     .addEvent('click', () => {
+        //         matrix.$destory()
+        //         new Matrix(7, 0.3).$mount(
+        //             document.getElementById('app')
+        //         )
+        //     })
+
+        // container.append(newGameBtn)
+
+        return container
+
+
+        // return new Block()
+        //     .addClass('matrix-container')
+        //     .append(
+        //         matrix.data.map((line, i) =>
+        //             new Block()
+        //                 .addClass('clearfix line-container')
+        //                 .append(
+        //                     line.map((element, j) =>
+        //                         new MatrixElement(element)
+        //                             .setAttr('matrix-key', `${i}-${j}`)
+        //                             .addEvent('click', e => {
+        //                                 callback && callback(
+        //                                     e.target
+        //                                 )
+        //                             })
+        //                     )
+        //                 )
+        //         )
+        //     )
+        //     .append(
+        //         new Block()
+        //             .addClass('btn-wrapper')
+        //             .append(
+        //                 new Button('New Game')
+        //                     .addClass('btn btn-restart')
+        //             )
+        //             .addEvent('click', () => {
+        //                 matrix.$destory()
+        //                 new Matrix(7, 0.3).$mount(
+        //                     document.getElementById('app')
+        //                 )
+        //             })
+        //     )
     }
 
     /**

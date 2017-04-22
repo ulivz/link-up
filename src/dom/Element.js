@@ -1,4 +1,4 @@
-class Element {
+export default class Element {
 
     constructor(el) {
         this.el = el
@@ -88,6 +88,9 @@ class Element {
             for (let item of content) {
                 el.append(item.el)
             }
+
+        } else {
+
         }
 
     }
@@ -127,36 +130,7 @@ class Element {
 
 }
 
-class Block extends Element {
 
-    constructor() {
-        super(Element.createDiv())
-    }
 
-}
 
-class Button extends Element {
 
-    constructor(text) {
-        super(Element.createBtn())
-        this.el.append(text)
-    }
-
-}
-
-class MatrixElement extends Block {
-
-    constructor(typeValue) {
-
-        super()
-
-        // default style
-        this.setFloat()
-            .setBgColor(typeValue ? getColor() : 'rgb(235,237,240)')
-            .setAttr('el-type', typeValue)
-            .setWidthAndHeight(50, 50)
-            .addClass('martix-element')
-
-    }
-
-}

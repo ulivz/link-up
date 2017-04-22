@@ -1,3 +1,13 @@
+header {
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    color: #aaa;
+    font-family: "Microsoft YaHei UI";
+    font-weight: 200;
+    text-align: center;
+}
+
 #app {
     text-align: center;
 }
@@ -17,6 +27,7 @@
 
 .matrix-container {
     display: inline-block;
+    transition: all 0.5s;
 }
 
 .martix-element {
@@ -29,7 +40,7 @@
 }
 
 .choosed {
-    border: 2px dashed #f88;
+    border: 3px solid #f88;
     box-shadow: 0 0 10px #f99;
 }
 
@@ -63,6 +74,10 @@
     }
 }
 
+.btn-wrapper {
+    padding: 10px 0;
+}
+
 .btn {
     border-style: solid;
     border-width: 0;
@@ -87,7 +102,7 @@
 }
 
 .btn {
-    -webkit-animation-name: greenPulse;
+    -webkit-animation-name: githubPulse;
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
 }

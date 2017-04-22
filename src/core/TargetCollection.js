@@ -1,8 +1,7 @@
-/**
- * Target Collection
- */
+import Target from './Target'
+import {find} from '../utils/utils'
 
-class TargetCollection {
+export default class TargetCollection {
 
     constructor(targetCollection) {
 

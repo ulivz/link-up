@@ -15,7 +15,7 @@ function createRandom(min, max) {
  * @param extra　extra conditon
  *        if the array is object[], you can speccify the attribute you want to find
  */
-function find(array, element, extra) {
+export function find(array, element, extra) {
     for (var i = 0, l = array.length; i < l; i++) {
         if ((extra ? array[i][extra] : array[i]) === element) {
             return i
@@ -28,7 +28,7 @@ function find(array, element, extra) {
  * Get a random color [From Github]
  * @returns {*}
  */
-function getColor() {
+export function getColor() {
     switch (Math.floor((Math.random() * 20) / 5)) {
         case 0:
             return '#c6e48b'

@@ -24,14 +24,12 @@ class Matrix {
         this.choices = new TargetCollection()
     }
 
-    getDom() {
-
+    get dom() {
         return Matrix.createDomByMatrix(this.data, target => this.handle(target))
     }
 
     render(el) {
-
-        dom.insert(el, this.getDom())
+        this.dom.mount(el)
     }
 
     // handle the click target element
@@ -53,7 +51,10 @@ class Matrix {
         }
     }
 
-    // handle the link of the target
+    /**
+     * handle the link of the target
+     * @param target
+     */
     linkHandle(target) {
 
         console.log(this.choices)
@@ -106,34 +107,33 @@ class Matrix {
      */
     static createDomByMatrix(matrix, callback) {
 
-        let container = dom.createDiv()
-
-        matrix.forEach((line, i)=> {
-
-            let subContainer = dom.createDiv()
-            dom.addClass(subContainer, 'clearfix')
-
-            line.forEach((element, j) => {
-
-                let el = Matrix.createMatrixElement(element)
-
-                dom.setAttr(el, 'matrix-key', `${i}-${j}`)
-                    .addEvent(el, 'click', e => {
-                        callback && callback(
-                            e.target
+        return new Block()
+            .addClass('matrix-container')
+            .append(
+                matrix.map((line, i) =>
+                    new Block()
+                        .addClass('clearfix line-container')
+                        .append(
+                            line.map((element, j) =>
+                                new MatrixElement(element)
+                                    .setAttr('matrix-key', `${i}-${j}`)
+                                    .addEvent('click', e => {
+                                        callback && callback(
+                                            e.target
+                                        )
+                                    })
+                            )
                         )
-                    })
-
-                subContainer.appendChild(el)
-
-            })
-
-            container.appendChild(subContainer)
-
-        })
-
-        return container
-
+                )
+            )
+            .append(
+                new Block()
+                    .addClass('btn-wrapper')
+                    .append(
+                        new Button('ReStart')
+                            .addClass('btn btn-restart')
+                    )
+            )
     }
 
     /**
@@ -166,26 +166,14 @@ class Matrix {
         return matrix
     }
 
+
     /**
-     * 生成
-     * @param value
-     * @returns {*}
+     * 是否允许连接？
+     * @param matrix
+     * @param point1
+     * @param point2
+     * @returns {boolean}
      */
-    static createMatrixElement(value) {
-
-        let el = dom.createDiv()
-
-        // 设定默认样式
-        dom.setFloat(el)
-            .setBgColor(el, value ? getColor() : 'rgb(235,237,240)')
-            .setAttr(el, 'el-type', value)
-            .setWidthAndHeight(el, 50, 50)
-            .addClass(el, 'martix-element')
-
-        return el
-    }
-
-
     static linkCheck(matrix, point1, point2) {
 
         let aCheck = Array.isArray

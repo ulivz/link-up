@@ -7,25 +7,25 @@ class Target {
     constructor(targetElement) {
 
         if (!(targetElement instanceof HTMLElement)) {
-            throw new Error('[Error] unExpected parameters' + targetElement)
+            throw new Error('[Error] Unexpected Parameters' + targetElement)
         }
 
         this.element = targetElement
     }
 
     choose() {
-        dom.addClass(this.element, 'choosed')
+        Element.addClass(this.element, 'choosed')
     }
 
     unChoose() {
 
-        dom.removeClass(this.element, 'choosed')
+        Element.removeClass(this.element, 'choosed')
     }
 
     remove() {
-        dom.setBgColor(this.element, 'rgb(235,237,240)')
-        dom.removeClass(this.element, 'choosed')
-        dom.setAttr(this.element, 'el-type', '0')
+        Element.setBgColor(this.element, 'rgb(235,237,240)')
+        Element.removeClass(this.element, 'choosed')
+        Element.setAttr(this.element, 'el-type', '0')
     }
 
     get type() {
@@ -33,7 +33,7 @@ class Target {
     }
 
     get isChoosed() {
-        return dom.hasClass(this.element, 'choosed')
+        return Element.hasClass(this.element, 'choosed')
     }
 
     get key() {

@@ -1,3 +1,6 @@
+#app {
+    text-align: center;
+}
 
 .clearfix {
     zoom: 1;
@@ -12,6 +15,10 @@
     visibility: hidden;
 }
 
+.matrix-container {
+    display: inline-block;
+}
+
 .martix-element {
     box-sizing: border-box;
     margin: 2px;
@@ -22,6 +29,65 @@
 }
 
 .choosed {
-    border: 2px solid #f77;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border: 2px dashed #f88;
+    box-shadow: 0 0 10px #f99;
+}
+
+@-webkit-keyframes githubPulse {
+    from {
+        background-color: rgb(35, 154, 59);
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+        background-color: rgb(25, 97, 39);
+        -webkit-box-shadow: 0 0 18px rgb(25, 97, 39);
+    }
+    to {
+        background-color: rgb(35, 154, 59);
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+}
+
+@-webkit-keyframes greenPulse {
+    from {
+        background-color: #007d9a;
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+    50% {
+        background-color: #2daebf;
+        -webkit-box-shadow: 0 0 18px #2daebf;
+    }
+    to {
+        background-color: #007d9a;
+        -webkit-box-shadow: 0 0 9px #333;
+    }
+}
+
+.btn {
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: normal;
+    margin: 0 0 1.25em;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    padding-top: 0.75em;
+    padding-right: 1.5em;
+    padding-bottom: 0.8125em;
+    padding-left: 1.5em;
+    font-size: 1em;
+    background-color: #adc708;
+    border-color: #829606;
+    color: white;
+    border-radius: 7px;
+}
+
+.btn {
+    -webkit-animation-name: greenPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
 }

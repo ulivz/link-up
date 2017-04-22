@@ -1,5 +1,5 @@
 /**
- * 生成一个指定区间的随机数
+ * Generates a random number for the specified interval
  * @param min
  * @param max
  * @returns {*}
@@ -25,7 +25,7 @@ function find(array, element, extra) {
 }
 
 /**
- * 获取一个随机颜色
+ * Get a random color [From Github]
  * @returns {*}
  */
 function getColor() {

@@ -21,7 +21,7 @@ let dom = {
     },
 
     insert: function (el, target) {
-        target.appendChild(el)
+        el.appendChild(target)
     },
 
     hasClass: function (el, className) {

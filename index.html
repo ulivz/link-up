@@ -10,29 +10,14 @@
 <div id="app"></div>
 <script src="js/dom.js"></script>
 <script src="js/utils.js"></script>
-<script src="js/linkup.js"></script>
+<script src="js/Target.js"></script>
+<script src="js/TargetCollection.js"></script>
+<script src="js/Matrix.js"></script>
 <script>
 
-    // Width and height of the matrix
-    const SIDE_LENGTH = 7
-
     // get the matrix
-    let matrix = new Matrix(SIDE_LENGTH, SIDE_LENGTH, 0.3)
-
-    // get random number
-    function getNumber() {
-        return Math.round(createRandom(0, SIDE_LENGTH))
-    }
-
-    // get random postion
-    let x1 = getNumber(),
-        y1 = getNumber(),
-        x2 = getNumber(),
-        y2 = getNumber()
-
-    // insert into dom
-    dom.insert(
-            matrix.getDom(), document.getElementById('app')
+    new Matrix(7, 0.3).render(
+            document.getElementById('app')
     )
 
 </script>

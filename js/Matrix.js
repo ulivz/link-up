@@ -4,131 +4,22 @@
  * MIT LiCENSE
  */
 
-/**
- * Target
- */
-
-class Target {
-
-    constructor(targetElement) {
-
-        if (!(targetElement instanceof HTMLElement)) {
-            throw new Error('[Error] unExpected parameters' + targetElement)
-        }
-
-        this.element = targetElement
-    }
-
-    choose() {
-        dom.addClass(this.element, 'choosed')
-    }
-
-    unChoose() {
-
-        dom.removeClass(this.element, 'choosed')
-    }
-
-    remove() {
-        dom.setBgColor(this.element, 'rgb(235,237,240)')
-        dom.removeClass(this.element, 'choosed')
-        dom.setAttr(this.element, 'el-type', '0')
-    }
-
-    get type() {
-        return this.element.getAttribute('el-type')
-    }
-
-    get isChoosed() {
-        return dom.hasClass(this.element, 'choosed')
-    }
-
-    get key() {
-        return this.element.getAttribute('matrix-key')
-    }
-
-    get bgColor() {
-        return this.element.style.backgroundColor
-    }
-
-}
-
-/**
- * Target Collection
- */
-class TargetCollection {
-
-    constructor(targetCollection) {
-
-        if (targetCollection) {
-
-            if (!Array.isArray(targetCollection)) {
-                throw new Error('[Error] unExpected parameters' + targetCollection)
-            }
-
-            for (let target of targetCollection) {
-                if (!(target instanceof Target)) {
-                    throw new Error('[Error] unExpected parameters' + targetCollection)
-                }
-            }
-
-        }
-
-        this.collection = targetCollection || []
-    }
-
-    push(target) {
-        this.collection.push(target)
-    }
-
-    deleteFirst() {
-        return this.collection.pop()
-    }
-
-    empty() {
-        this.collection = []
-    }
-
-    delete(target) {
-        this.collection.splice(
-            find(this.collection, target), 1
-        )
-    }
-
-    get colorCheck() {
-        return this.pointOneBgColor === this.pointTwoBgColor
-    }
-
-    get length() {
-        return this.collection.length
-    }
-
-    get isFull() {
-        return this.length === 2
-    }
-
-    // get coordinate 1
-    get pointOne() {
-        return this.collection[0].key.split('-')
-    }
-
-    // get coordinate 2
-    get pointTwo() {
-        return this.collection[1].key.split('-')
-    }
-
-    get pointOneBgColor() {
-        return this.collection[0].bgColor
-    }
-
-    get pointTwoBgColor() {
-        return this.collection[1].bgColor
-    }
-
-}
-
 class Matrix {
 
-    constructor(xAxis, yXias, zeroChance) {
+    constructor() {
+
+        let args = arguments, xAxis, yXias, zeroChance
+
+        if (args.length === 2) {
+            xAxis = yXias = args[0]
+            zeroChance = args[1]
+
+        } else {
+            xAxis = args[0]
+            yXias = args[1]
+            zeroChance = args[2]
+        }
+
         this.data = Matrix.createMatrix(xAxis, yXias, zeroChance)
         this.choices = new TargetCollection()
     }
@@ -136,6 +27,11 @@ class Matrix {
     getDom() {
 
         return Matrix.createDomByMatrix(this.data, target => this.handle(target))
+    }
+
+    render(el) {
+
+        dom.insert(el, this.getDom())
     }
 
     // handle the click target element

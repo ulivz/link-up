@@ -6,12 +6,21 @@ body {
 
 header {
     height: 70px;
-    line-height: 70px;
-    font-size: 35px;
-    color: #aaa;
+    line-height: 60px;
+    font-size: 30px;
     font-family: "Microsoft YaHei";
-    font-weight: 500;
+
     text-align: center;
+}
+
+header .link {
+    font-weight: 500;
+    color: rgb(25, 97, 39);
+}
+
+header .up {
+    color: rgb(203, 56, 55);
+    font-weight: 900;
 }
 
 #app {

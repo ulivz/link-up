@@ -1,6 +1,10 @@
 ## link-up
 一个纯js编写的连连看小游戏
 
+## Demo
+
+<img style="width: 300px" src="demo.gif" alt="">
+
 ## Quick Start
 
 install：

@@ -114,17 +114,21 @@ export default class Element {
 
     static setAttr(el, attrName, attrValue) {
         el.setAttribute(attrName, attrValue)
-        return this;
+        return this
     }
 
     static addEvent(el, type, fn) {
+
         if (el.addEventListener) {
             el.addEventListener(type, fn, false)
+
         } else if (el.attachEvent) {
             el.attachEvent('on' + type, fn)
+
         } else {
-            el['on' + type] = fn;
+            el['on' + type] = fn
         }
+
         return this;
     }
 

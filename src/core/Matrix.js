@@ -37,7 +37,10 @@ export default class Matrix {
         this.mountElement.innerHTML = null
     }
 
-    // handle the click target element
+    /**
+     * handle the click target
+     * @param target
+     */
     handle(target) {
 
         target = new Target(target)
@@ -112,6 +115,10 @@ export default class Matrix {
      */
     static createDomByMatrix(matrix, callback) {
 
+        if (!(matrix instanceof Matrix)) {
+            throw new Error('[Error] Unexpected parameters')
+        }
+
         let container = new Block()
         container.addClass('matrix-container')
 
@@ -151,23 +158,9 @@ export default class Matrix {
         btnWrapper.append(newGameBtn)
         container.append(btnWrapper)
 
-        // newGameBtn
-        //     .addClass('btn-wrapper')
-        //     .append(
-        //         new Button('New Game')
-        //             .addClass('btn btn-restart')
-        //     )
-        //     .addEvent('click', () => {
-        //         matrix.$destory()
-        //         new Matrix(7, 0.3).$mount(
-        //             document.getElementById('app')
-        //         )
-        //     })
-
-        // container.append(newGameBtn)
-
         return container
 
+        // 以下为 FP 写法
 
         // return new Block()
         //     .addClass('matrix-container')

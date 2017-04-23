@@ -16,7 +16,6 @@ export default class Target {
     }
 
     unChoose() {
-
         Element.removeClass(this.element, 'choosed')
     }
 

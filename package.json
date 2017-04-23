@@ -1,7 +1,7 @@
 {
-  "name": "sell",
+  "name": "linkup-game",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A small game link-up developed by ES6-class",
   "author": "toxichl",
   "private": true,
   "main": "dist/linkup.min.js",

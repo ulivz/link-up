@@ -25,3 +25,7 @@ new Matrix(7, 0.3).$mount(
     document.getElementById('app')
 )
 ```
+
+## Known Bug
+
+This game is temporarily unavailable to use on mobile devices 

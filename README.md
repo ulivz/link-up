@@ -1,11 +1,11 @@
 ## link-up
-一个纯js编写的连连看小游戏
+A small game "link-up"
 
 ## Demo
 
-![demo.gif](http://www.v2js.com/link-up/)
-
-<img style="width: 300px" src="" alt="">
+<a href="http://www.v2js.com/link-up/">
+	<img style="width: 300px" src="" alt="">
+</a>
 
 ## Quick Start
 

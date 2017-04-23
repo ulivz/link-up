@@ -20,12 +20,12 @@ export default class Linkup {
             zeroChance = args[2]
         }
 
-        this.data = Matrix.createMatrix(xAxis, yXias, zeroChance)
+        this.data = Linkup.createMatrix(xAxis, yXias, zeroChance)
         this.choices = new TargetCollection()
     }
 
     get dom() {
-        return Matrix.createDomByMatrix(this, target => this.handle(target))
+        return Linkup.createDomByMatrix(this, target => this.handle(target))
     }
 
     $mount(el) {
@@ -84,7 +84,7 @@ export default class Linkup {
             }
 
             // check link
-            let linkCheck = Matrix.linkCheck(
+            let linkCheck = Linkup.linkCheck(
                 this.data,
                 this.choices.pointOne,
                 this.choices.pointTwo
@@ -117,7 +117,7 @@ export default class Linkup {
      */
     static createDomByMatrix(matrix, callback) {
 
-        if (!(matrix instanceof Matrix)) {
+        if (!(matrix instanceof Linkup)) {
             throw new Error('[Error] Unexpected parameters')
         }
 
@@ -150,7 +150,7 @@ export default class Linkup {
         newGameBtn.addClass('btn btn-restart')
             .addEvent('click', () => {
                 matrix.$destory()
-                new Matrix(7, 0.3).$mount(
+                new Linkup(7, 0.3).$mount(
                     document.getElementById('app')
                 )
             })

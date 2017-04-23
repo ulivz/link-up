@@ -454,7 +454,7 @@ var _Target = __webpack_require__(1);
 
 var _Target2 = _interopRequireDefault(_Target);
 
-var _TargetCollection = __webpack_require__(5);
+var _TargetCollection = __webpack_require__(6);
 
 var _TargetCollection2 = _interopRequireDefault(_TargetCollection);
 
@@ -462,21 +462,21 @@ var _Block = __webpack_require__(2);
 
 var _Block2 = _interopRequireDefault(_Block);
 
-var _Button = __webpack_require__(6);
+var _Button = __webpack_require__(7);
 
 var _Button2 = _interopRequireDefault(_Button);
 
-var _MatrixElement = __webpack_require__(7);
+var _LinkupElement = __webpack_require__(5);
 
-var _MatrixElement2 = _interopRequireDefault(_MatrixElement);
+var _LinkupElement2 = _interopRequireDefault(_LinkupElement);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Matrix = function () {
-    function Matrix() {
-        _classCallCheck(this, Matrix);
+var Linkup = function () {
+    function Linkup() {
+        _classCallCheck(this, Linkup);
 
         var args = arguments,
             xAxis = void 0,
@@ -492,11 +492,11 @@ var Matrix = function () {
             zeroChance = args[2];
         }
 
-        this.data = Matrix.createMatrix(xAxis, yXias, zeroChance);
+        this.data = Linkup.createMatrix(xAxis, yXias, zeroChance);
         this.choices = new _TargetCollection2.default();
     }
 
-    _createClass(Matrix, [{
+    _createClass(Linkup, [{
         key: '$mount',
         value: function $mount(el) {
             this.mountElement = el;
@@ -560,7 +560,7 @@ var Matrix = function () {
                 }
 
                 // check link
-                var linkCheck = Matrix.linkCheck(this.data, this.choices.pointOne, this.choices.pointTwo);
+                var linkCheck = Linkup.linkCheck(this.data, this.choices.pointOne, this.choices.pointTwo);
 
                 console.info('Result: ' + linkCheck);
 
@@ -616,7 +616,7 @@ var Matrix = function () {
         get: function get() {
             var _this = this;
 
-            return Matrix.createDomByMatrix(this, function (target) {
+            return Linkup.createDomByMatrix(this, function (target) {
                 return _this.handle(target);
             });
         }
@@ -624,7 +624,7 @@ var Matrix = function () {
         key: 'createDomByMatrix',
         value: function createDomByMatrix(matrix, callback) {
 
-            if (!(matrix instanceof Matrix)) {
+            if (!(matrix instanceof Linkup)) {
                 throw new Error('[Error] Unexpected parameters');
             }
 
@@ -638,7 +638,7 @@ var Matrix = function () {
 
                 line.forEach(function (element, j) {
 
-                    var matrixElement = new _MatrixElement2.default(element);
+                    var matrixElement = new _LinkupElement2.default(element);
                     matrixElement.setAttr('matrix-key', i + '-' + j).addEvent('click', function (e) {
                         callback && callback(e.target);
                     });
@@ -651,7 +651,7 @@ var Matrix = function () {
             var newGameBtn = new _Button2.default('New Game');
             newGameBtn.addClass('btn btn-restart').addEvent('click', function () {
                 matrix.$destory();
-                new Matrix(7, 0.3).$mount(document.getElementById('app'));
+                new Linkup(7, 0.3).$mount(document.getElementById('app'));
             });
 
             var btnWrapper = new _Block2.default();
@@ -814,16 +814,60 @@ var Matrix = function () {
         }
     }]);
 
-    return Matrix;
+    return Linkup;
 }();
 
-exports.default = Matrix;
+exports.default = Linkup;
 
 
-window.Matrix = Matrix;
+window.Linkup = Linkup;
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Block2 = __webpack_require__(2);
+
+var _Block3 = _interopRequireDefault(_Block2);
+
+var _utils = __webpack_require__(3);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var LinkupElement = function (_Block) {
+    _inherits(LinkupElement, _Block);
+
+    function LinkupElement(typeValue) {
+        _classCallCheck(this, LinkupElement);
+
+        // default style
+        var _this = _possibleConstructorReturn(this, (LinkupElement.__proto__ || Object.getPrototypeOf(LinkupElement)).call(this));
+
+        _this.setFloat().setBgColor(typeValue ? (0, _utils.getColor)() : 'rgb(235,237,240)').setAttr('el-type', typeValue).setWidthAndHeight(35, 35).addClass('martix-element');
+
+        return _this;
+    }
+
+    return LinkupElement;
+}(_Block3.default);
+
+exports.default = LinkupElement;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -949,7 +993,7 @@ var TargetCollection = function () {
 exports.default = TargetCollection;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -989,50 +1033,6 @@ var Button = function (_Element) {
 exports.default = Button;
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _Block2 = __webpack_require__(2);
-
-var _Block3 = _interopRequireDefault(_Block2);
-
-var _utils = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var MatrixElement = function (_Block) {
-    _inherits(MatrixElement, _Block);
-
-    function MatrixElement(typeValue) {
-        _classCallCheck(this, MatrixElement);
-
-        // default style
-        var _this = _possibleConstructorReturn(this, (MatrixElement.__proto__ || Object.getPrototypeOf(MatrixElement)).call(this));
-
-        _this.setFloat().setBgColor(typeValue ? (0, _utils.getColor)() : 'rgb(235,237,240)').setAttr('el-type', typeValue).setWidthAndHeight(35, 35).addClass('martix-element');
-
-        return _this;
-    }
-
-    return MatrixElement;
-}(_Block3.default);
-
-exports.default = MatrixElement;
-
-/***/ }),
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1043,13 +1043,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Matrix = __webpack_require__(4);
+var _Linkup = __webpack_require__(4);
 
-var _Matrix2 = _interopRequireDefault(_Matrix);
+var _Linkup2 = _interopRequireDefault(_Linkup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _Matrix2.default;
+exports.default = _Linkup2.default;
 
 /***/ })
 /******/ ]);

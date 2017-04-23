@@ -1,3 +1,3 @@
-import Matrix from './core/Matrix'
+import Linkup from './core/Linkup'
 
-export default Matrix
+export default Linkup

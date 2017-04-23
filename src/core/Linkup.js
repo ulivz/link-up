@@ -2,9 +2,9 @@ import Target from './Target'
 import TargetCollection from './TargetCollection'
 import Block from '../dom/Block'
 import Button from '../dom/Button'
-import MatrixElement from '../dom/MatrixElement'
+import LinkupElement from './LinkupElement'
 
-export default class Matrix {
+export default class Linkup {
 
     constructor() {
 
@@ -131,7 +131,7 @@ export default class Matrix {
 
             line.forEach((element, j)=> {
 
-                let matrixElement = new MatrixElement(element)
+                let matrixElement = new LinkupElement(element)
                 matrixElement.setAttr('matrix-key', `${i}-${j}`)
                     .addEvent('click', e => {
                         callback && callback(
@@ -291,4 +291,4 @@ export default class Matrix {
 
 }
 
-window.Matrix = Matrix
+window.Linkup = Linkup

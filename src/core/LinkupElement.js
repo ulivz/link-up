@@ -1,7 +1,7 @@
-import Block from './Block'
+import Block from '../dom/Block'
 import {getColor} from '../utils/utils'
 
-export default class MatrixElement extends Block {
+export default class LinkupElement extends Block {
 
     constructor(typeValue) {
 

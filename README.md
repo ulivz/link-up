@@ -3,7 +3,9 @@
 
 ## Demo
 
-<img style="width: 300px" src="demo.gif" alt="">
+![demo.gif](http://www.v2js.com/link-up/)
+
+<img style="width: 300px" src="" alt="">
 
 ## Quick Start
 

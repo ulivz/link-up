@@ -1,5 +1,5 @@
 ## link-up
-A small game **link-up** v2js.com/link-up/
+A small game **link-up** [v2js.com/link-up/](http://www.v2js.com/link-up/)
 
 ## Demo
 

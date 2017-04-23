@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A small game link-up developed by ES6-class",
   "author": "toxichl",
-  "private": true,
   "main": "dist/linkup.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --host 192.168.1.3 --port 8089 --inline --hot",

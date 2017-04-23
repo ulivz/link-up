@@ -4,7 +4,7 @@ A small game "link-up"
 ## Demo
 
 <a href="http://www.v2js.com/link-up/">
-	<img style="width: 300px" src="" alt="">
+<img style="width: 300px" src="" alt="">
 </a>
 
 ## Quick Start
@@ -30,4 +30,4 @@ new Matrix(7, 0.3).$mount(
 
 ## Known Bug
 
-This game is temporarily unavailable to use on mobile devices 
+Oh my Gad! This game is temporarily unavailable to use on mobile devices ... 😐

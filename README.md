@@ -3,7 +3,9 @@ A small game "link-up"
 
 ## Demo
 
-<img style="width: 300px" src="" alt="">
+<a href="http://www.v2js.com/link-up/">
+<img style="width: 300px" src="demo.gif" alt="">
+</a>
 
 
 ## Quick Start

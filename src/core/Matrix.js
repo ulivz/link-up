@@ -46,7 +46,7 @@ export default class Matrix {
         target = new Target(target)
 
         if (target.type == 0) {
-            console.log('Cannot choose!')
+            console.log('[Warning] Cannot choose this element!')
             return
         }
 
@@ -65,8 +65,6 @@ export default class Matrix {
      */
     linkHandle(target) {
 
-        console.log(this.choices)
-
         if (this.choices.isFull) {
             let firstTarget = this.choices.deleteFirst()
             firstTarget.unChoose()
@@ -77,9 +75,11 @@ export default class Matrix {
 
         if (this.choices.isFull) {
 
+            console.log(this.choices)
+
             // check color
             if (!this.choices.colorCheck) {
-                console.info('Cannot match color!')
+                console.info('[Warning] Cannot match color!')
                 return
             }
 
@@ -89,6 +89,8 @@ export default class Matrix {
                 this.choices.pointOne,
                 this.choices.pointTwo
             )
+
+            console.info('Result: ' + linkCheck)
 
             if (linkCheck) this.successLink()
 
@@ -160,7 +162,9 @@ export default class Matrix {
 
         return container
 
-        // 以下为 FP 写法
+        /**
+         * The following is FP writing
+         */
 
         // return new Block()
         //     .addClass('matrix-container')
@@ -286,3 +290,5 @@ export default class Matrix {
     }
 
 }
+
+window.Matrix = Matrix

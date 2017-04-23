@@ -2,7 +2,9 @@ module.exports = {
 	entry: "./src/main.js",
 	output: {
 		path: __dirname,
-		filename: "./dist/linkup.js"
+		filename: "./dist/linkup.js",
+		library: 'linkup',
+		libraryTarget: 'umd'
 	},
 	module: {
 		loaders: [
@@ -14,3 +16,4 @@ module.exports = {
 		]
 	}
 };
+

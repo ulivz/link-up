@@ -1,4 +1,7 @@
 ## link-up
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ulivz/link-up.svg)](https://greenkeeper.io/)
+
 A small game **link-up** [v2js.com/link-up/](http://www.v2js.com/link-up/)
 
 ## Demo
